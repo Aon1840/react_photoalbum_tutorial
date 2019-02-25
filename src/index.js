@@ -1,35 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './pages/App';
 import * as serviceWorker from './serviceWorker';
 
-import {Router, browserHistory} from 'react-router'
+import { Router, browserHistory } from 'react-router'
 import routes from './routes'
-import {createStore} from 'redux'
-import {Provider} from 'react-redux'
+import { createStore, applyMiddleware } from 'redux'
+import { Provider } from 'react-redux'
+import promiseMiddleware from 'redux-promise-middleware'
+import thunk from 'redux-thunk'
 import reducers from './reducers'
 
-const store = createStore(reducers)
+const store = createStore(
+    reducers,
+    applyMiddleware(thunk,promiseMiddleware())
+)
 
-// reducer
-// function countAge(state = 0,action){
-//     switch(action.type) {
-//         case 'INCREMENT':
-//             return state + 1
-//         case 'DECREMENT':
-//             return state - 1
-//         default:
-//             return state
-//     }
-// }
-
-// const store = createStore(countAge)
-// store.subscribe(()=> {console.log('subscribe', store.getState())})
-// console.log('befor dispatch', store.getState())
-// store.dispatch({
-//     type:'INCREMENT'
-// })
 
 // ReactDOM.render(<App />, document.getElementById('root'));
 ReactDOM.render(

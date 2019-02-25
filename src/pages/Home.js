@@ -40,7 +40,7 @@ function mapDispatchToProps(dispatch) {
         increateAge: ()=> {
             dispatch({type: 'INCREMENT'})
         },
-        decreaseAge: ()=> {
+        decreateAge: ()=> {
             dispatch({type: 'DECREMENT'})
         }
     }
